@@ -32,14 +32,21 @@ def merge(list, start, mid, end):
 def is_anagram(first_string, second_string):
     first_list = [letter for letter in first_string.lower()]
     second_list = [letter for letter in second_string.lower()]
-    if (len(first_list) != len(second_list)):
-        return (first_string.lower(), second_string.lower(), False)
-    if (len(first_list) == 0 or len(second_list) == 0):
-        return (first_string.lower(), second_string.lower(), False)
+
     merge_sort(first_list)
     merge_sort(second_list)
-    if ("".join(first_list) != "".join(second_list)):
-        print(first_list, second_list)
-        return (first_string.lower(), second_string.lower(), False)
-    if ("".join(first_list) == "".join(second_list)):
-        return (first_string.lower(), second_string.lower(), True)
+
+    first_string = "".join(first_list)
+    second_string = "".join(second_list)
+
+    if (len(first_string) != len(second_string)):
+        return (first_string, second_string, False)
+
+    if (len(first_string) == 0 or len(first_string) == 0):
+        return (first_string, second_string, False)
+
+    if (first_string != second_string):
+        return (first_string, second_string, False)
+
+    if (first_string == second_string):
+        return (first_string, second_string, True)
